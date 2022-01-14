@@ -1,0 +1,139 @@
+[
+  {
+    "model": "garagem.Tipo",
+    "pk": 1,
+    "fields": {
+      "nome": "Automóvel"
+    }
+  },
+  {
+    "model": "garagem.Tipo",
+    "pk": 2,
+    "fields": {
+      "nome": "Motocicleta"
+    }
+  },
+  {
+    "model": "garagem.Tipo",
+    "pk": 3,
+    "fields": {
+      "nome": "Caminhonete"
+    }
+  },
+  {
+    "model": "garagem.Proprietario",
+    "pk": 1,
+    "fields": {
+      "primeiro_nome": "Frank",
+      "ultimo_nome": "Miller",
+      "data_nascimento": "1957-01-27"
+    }
+  },
+  {
+    "model": "garagem.Proprietario",
+    "pk": 2,
+    "fields": {
+      "primeiro_nome": "David",
+      "ultimo_nome": "Fincher",
+      "data_nascimento": "1962-08-28"
+    }
+  },
+  {
+    "model": "garagem.Proprietario",
+    "pk": 3,
+    "fields": {
+      "primeiro_nome": "Yamandu",
+      "ultimo_nome": "Costa",
+      "data_nascimento": "1980-01-24"
+    }
+  },
+  {
+    "model": "garagem.Proprietario",
+    "pk": 4,
+    "fields": {
+      "primeiro_nome": "Pedro Paulo",
+      "ultimo_nome": "Soares Pereira",
+      "data_nascimento": "1970-04-22"
+    }
+  },
+  {
+    "model": "garagem.Veiculo",
+    "pk": 1,
+    "fields": {
+      "modelo": "Civic",
+      "proprietario": 1,
+      "fabricante": "Honda",
+      "cor": "Preto",
+      "tipo": 1
+    }
+  },
+  {
+    "model": "garagem.Veiculo",
+    "pk": 2,
+    "fields": {
+      "modelo": "Supra",
+      "proprietario": 2,
+      "fabricante": "Toyota",
+      "cor": "Branco",
+      "tipo": 1
+    }
+  },
+  {
+    "model": "garagem.Veiculo",
+    "pk": 3,
+    "fields": {
+      "modelo": "Frontier",
+      "proprietario": 3,
+      "fabricante": "Nissan",
+      "cor": "Cinza",
+      "tipo": 3
+    }
+  },
+  {
+    "model": "garagem.Veiculo",
+    "pk": 4,
+    "fields": {
+      "modelo": "Ninja",
+      "proprietario": 4,
+      "fabricante": "Kawasaki",
+      "cor": "Amarelo",
+      "tipo": 2
+    }
+  },
+  {
+    "model": "garagem.VagaVeiculo",
+    "pk": "7f31d858-a297-4a57-8c74-b07681247f26",
+    "fields": {
+      "veiculo": 1,
+      "data_retirada": "2022-01-01",
+      "situacao": "m"
+    }
+  },
+  {
+    "model": "garagem.VagaVeiculo",
+    "pk": "ec9b914d-e95e-49e8-817c-53470f0b7bad",
+    "fields": {
+      "veiculo": 2,
+      "data_retirada": "2022-01-30",
+      "situacao": "o"
+    }
+  },
+  {
+    "model": "garagem.VagaVeiculo",
+    "pk": "3b3298bb-fb8f-470a-b937-8f233f610179",
+    "fields": {
+      "veiculo": 3,
+      "data_retirada": "2022-01-25",
+      "situacao": "o"
+    }
+  },
+  {
+    "model": "garagem.VagaVeiculo",
+    "pk": "d6c43466-90a8-4186-a7ce-f53b7d398726",
+    "fields": {
+      "veiculo": 4,
+      "data_retirada": "2022-01-05",
+      "situacao": "m"
+    }
+  }
+]
