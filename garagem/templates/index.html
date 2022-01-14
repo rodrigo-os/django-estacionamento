@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="content-block">
+    <h1>Estacionamento - Página inicial</h1>
+
+    <h2>Sistema de Gestão</h2>
+    <p>O estacionamento tem atualmente os seguintes registros:</p>
+    <ul>
+        <li><strong>Veículos:</strong> {{ num_veiculos }}</li>
+        <li><strong>Vagas que estão em manutenção:</strong> {{ num_vagas_manutencao }}</li>
+        <li><strong>Vagas que estão ocupadas:</strong> {{ num_vagas_ocupadas }}</li>
+        <li><strong>Tipos de veículos:</strong> {{ num_tipos }}</li>
+        <li><strong>Total de vagas:</strong> {{ num_vagas }}</li>
+        <li><strong>Proprietários:</strong> {{ num_proprietarios }}</li>
+    </ul>
+</div>
+
+{% endblock %}
