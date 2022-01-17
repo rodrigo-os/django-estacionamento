@@ -19,7 +19,7 @@ class Proprietario(models.Model):
         ordering = ['ultimo_nome', 'primeiro_nome']
 
     def __str__(self):
-        return f'{self.primeiro_nome}, {self.ultimo_nome}'
+        return f'{self.primeiro_nome} {self.ultimo_nome}'
 
 
 class Veiculo(models.Model):
@@ -37,7 +37,8 @@ import uuid
 
 
 class VagaVeiculo(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Identificador único em todo o estacionamento, referente a vaga e ao veículo que a ocupa.')
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+                          help_text='Identificador único em todo o estacionamento, referente a vaga e ao veículo que a ocupa.')
     data_retirada = models.DateField(null=True, blank=True)
     veiculo = models.ForeignKey(Veiculo, on_delete=models.SET_NULL, null=True)
 
