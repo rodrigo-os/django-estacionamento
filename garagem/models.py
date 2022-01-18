@@ -29,6 +29,9 @@ class Veiculo(models.Model):
     cor = models.CharField(max_length=20, help_text='Entre com a cor predominante do veículo. Ex: Prata')
     tipo = models.ForeignKey(Tipo, on_delete=models.SET_NULL, null=True)
 
+    class Meta:
+        permissions = (("pode_manipular_veiculo", "Manipula o cadastro de veículos."),)
+
     def get_absolute_url(self):
         return reverse('veiculo-detalhes', args=[str(self.id)])
 

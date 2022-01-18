@@ -36,18 +36,21 @@ class VehicleDetailView(generic.DetailView):
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
-
-class VehicleCreate(CreateView):
+class VehicleCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'garagem.pode_manipular_veiculo'
     model = Veiculo
     fields = '__all__'
 
 
-class VehicleUpdate(UpdateView):
+class VehicleUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = 'garagem.pode_manipular_veiculo'
     model = Veiculo
     fields = ['modelo', 'fabricante', 'cor', 'tipo']
 
 
-class VehicleDelete(DeleteView):
+class VehicleDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'garagem.pode_manipular_veiculo'
     model = Veiculo
     success_url = reverse_lazy('veiculos')
