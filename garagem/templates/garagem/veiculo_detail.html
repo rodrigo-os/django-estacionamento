@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>Veículo: {{ veiculo.fabricante }}/{{ veiculo.modelo }}</h1>
+
+    <p><strong>Modelo: </strong>{{ veiculo.modelo }}</a></p>
+    <p><strong>Fabricante:</strong> {{ veiculo.fabricante }}</p>
+    <p><strong>Proprietário:</strong> {{ veiculo.proprietario }}</p>
+    <p><strong>Cor:</strong> {{ veiculo.cor }}</p>
+    <p><strong>Tipo:</strong> {{ veiculo.tipo }}</p>
+
+{% endblock %}

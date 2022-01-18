@@ -28,3 +28,26 @@ def index(request):
 
 class VehicleListView(generic.ListView):
     model = Veiculo
+
+
+class VehicleDetailView(generic.DetailView):
+    model = Veiculo
+
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+
+class VehicleCreate(CreateView):
+    model = Veiculo
+    fields = '__all__'
+
+
+class VehicleUpdate(UpdateView):
+    model = Veiculo
+    fields = ['modelo', 'fabricante', 'cor', 'tipo']
+
+
+class VehicleDelete(DeleteView):
+    model = Veiculo
+    success_url = reverse_lazy('veiculos')

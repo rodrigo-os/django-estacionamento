@@ -1,15 +1,17 @@
 {% extends "base_generic.html"%}
 
 {% block content %}
+
+    <a href="{% url 'veiculo-create' %}"> Novo veículo</a>
     {% if veiculo_list %}
         <h1>Lista de Veículos</h1>
         <ul>
             {% for veiculo in veiculo_list %}
                 <li>
-                    <a href="{{ veiculo.get_absolute_url }}">
-                        {{veiculo.modelo}}
-                    </a>
+                    <a href="{{ veiculo.get_absolute_url }}">{{veiculo.modelo}}</a>
                     {{veiculo.proprietario}}
+                    <a href="{% url 'veiculo-update' veiculo.id%}"> - Atualizar</a>
+                    <a href="{% url 'veiculo-delete' veiculo.id%}"> - Excluir</a>
                 </li>
             {% endfor %}
         </ul>
