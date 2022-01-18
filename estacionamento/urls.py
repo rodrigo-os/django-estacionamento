@@ -28,3 +28,7 @@ urlpatterns += [
 urlpatterns += [
     path('garagem/', include('garagem.urls')),
 ]
+
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
