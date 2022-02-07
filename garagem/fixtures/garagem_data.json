@@ -60,80 +60,80 @@
     "model": "garagem.Veiculo",
     "pk": 1,
     "fields": {
-      "modelo": "Civic",
-      "proprietario": 1,
       "fabricante": "Honda",
+      "modelo": "Civic",
+      "tipo": 1,
       "cor": "Preto",
-      "tipo": 1
+      "proprietario": 1
     }
   },
   {
     "model": "garagem.Veiculo",
     "pk": 2,
     "fields": {
-      "modelo": "Supra",
-      "proprietario": 2,
       "fabricante": "Toyota",
+      "modelo": "Supra",
+      "tipo": 1,
       "cor": "Branco",
-      "tipo": 1
+      "proprietario": 2
     }
   },
   {
     "model": "garagem.Veiculo",
     "pk": 3,
     "fields": {
-      "modelo": "Frontier",
-      "proprietario": 3,
       "fabricante": "Nissan",
+      "modelo": "Frontier",
+      "tipo": 3,
       "cor": "Cinza",
-      "tipo": 3
+      "proprietario": 3
     }
   },
   {
     "model": "garagem.Veiculo",
     "pk": 4,
     "fields": {
-      "modelo": "Ninja",
-      "proprietario": 4,
       "fabricante": "Kawasaki",
+      "modelo": "Ninja",
+      "tipo": 2,
       "cor": "Amarelo",
-      "tipo": 2
+      "proprietario": 4
     }
   },
   {
-    "model": "garagem.VagaVeiculo",
-    "pk": "7f31d858-a297-4a57-8c74-b07681247f26",
+    "model": "garagem.Vaga",
+    "pk": 1,
     "fields": {
       "veiculo": 1,
-      "data_retirada": "2022-01-01",
-      "situacao": "m"
+      "data_retirada": "2022-02-25",
+      "situacao": "o"
     }
   },
   {
-    "model": "garagem.VagaVeiculo",
-    "pk": "ec9b914d-e95e-49e8-817c-53470f0b7bad",
+    "model": "garagem.Vaga",
+    "pk": 2,
     "fields": {
       "veiculo": 2,
-      "data_retirada": "2022-01-30",
+      "data_retirada": "2022-02-25",
       "situacao": "o"
     }
   },
   {
-    "model": "garagem.VagaVeiculo",
-    "pk": "3b3298bb-fb8f-470a-b937-8f233f610179",
+    "model": "garagem.Vaga",
+    "pk": 3,
     "fields": {
       "veiculo": 3,
-      "data_retirada": "2022-01-25",
+      "data_retirada": "2022-02-25",
       "situacao": "o"
     }
   },
   {
-    "model": "garagem.VagaVeiculo",
-    "pk": "d6c43466-90a8-4186-a7ce-f53b7d398726",
+    "model": "garagem.Vaga",
+    "pk": 4,
     "fields": {
       "veiculo": 4,
-      "data_retirada": "2022-01-05",
-      "situacao": "m"
+      "data_retirada": "2022-02-25",
+      "situacao": "o"
     }
   }
 ]

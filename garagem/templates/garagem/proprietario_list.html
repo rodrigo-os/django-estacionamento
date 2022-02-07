@@ -1,0 +1,26 @@
+{% extends "base_generic.html"%}
+
+{% block content %}
+
+    <h1>Lista de Proprietários</h1>
+
+    {% if perms.garagem.pode_manipular_proprietario %}
+        <a href="{% url 'proprietario-create' %}"> Novo proprietário</a>
+    {% endif %}
+    {% if proprietario_list %}
+        <ul>
+            {% for proprietario in proprietario_list %}
+                <li>
+                    <a href="{{ proprietario.get_absolute_url }}">{{ proprietario.primeiro_nome }} {{ proprietario.ultimo_nome }}</a>
+                    {% if perms.garagem.pode_manipular_proprietario %}
+                        <a href="{% url 'proprietario-update' proprietario.id%}"> - Atualizar</a>
+                        <a href="{% url 'proprietario-delete' proprietario.id%}"> - Excluir</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Não existem proprietários cadastrados.</p>
+    {% endif %}
+
+{% endblock %}

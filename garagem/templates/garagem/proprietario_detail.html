@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>Proprietário: {{ proprietario.primeiro_nome }} {{ proprietario.ultimo_nome }}</h1>
+
+    <p><strong>Nome: </strong>{{ proprietario.primeiro_nome }}</a></p>
+    <p><strong>Sobrenome:</strong> {{ proprietario.ultimo_nome }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ proprietario.data_nascimento }}</p>
+
+{% endblock %}

@@ -10,4 +10,20 @@
     <p><strong>Cor:</strong> {{ veiculo.cor }}</p>
     <p><strong>Tipo:</strong> {{ veiculo.tipo }}</p>
 
+    <div style="margin-left: 20px;margin-top: 20px">
+        <h4>Vaga</h4>
+        {%for copy in veiculo.vaga_set.all%}
+        <p class="{% if copy.situacao == 'o' %}text-success{% elif copy.situacao == m%}text-danger{% else %} text-warning{% endif %}">
+            {{ copy.get_situacao_display }}</p>
+
+        {% if copy.situacao != m %}
+        <p><strong>Deve ser retirado em:</strong> {{copy.data_retirada}}</p>
+        {% endif %}
+        <p class="text-muted"><strong>Id:</strong>{{copy.id}}</p>
+        {% endfor %}
+
+    </div>
+
+
+
 {% endblock %}

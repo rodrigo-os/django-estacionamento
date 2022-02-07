@@ -16,20 +16,26 @@ class Proprietario(models.Model):
     data_nascimento = models.DateField(null=True, blank=True)
 
     class Meta:
-        ordering = ['ultimo_nome', 'primeiro_nome']
+        ordering = ['primeiro_nome','ultimo_nome']
+        permissions = (("pode_manipular_proprietario", "Manipula o cadastro de proprietários."),)
+
+    def get_absolute_url(self):
+        return reverse('proprietario-detalhes', args=[str(self.id)])
 
     def __str__(self):
         return f'{self.primeiro_nome} {self.ultimo_nome}'
 
 
 class Veiculo(models.Model):
+    fabricante = models.CharField(max_length=100)
     modelo = models.CharField(max_length=100)
-    proprietario = models.ForeignKey(Proprietario, on_delete=models.SET_NULL, null=True)
-    fabricante = models.TextField(max_length=100)
-    cor = models.CharField(max_length=20, help_text='Entre com a cor predominante do veículo. Ex: Prata')
     tipo = models.ForeignKey(Tipo, on_delete=models.SET_NULL, null=True)
+    cor = models.CharField(max_length=20, help_text='Entre com a cor predominante do veículo. Ex: Prata')
+    proprietario = models.ForeignKey(Proprietario, on_delete=models.SET_NULL, null=True)
+
 
     class Meta:
+        ordering = ['modelo']
         permissions = (("pode_manipular_veiculo", "Manipula o cadastro de veículos."),)
 
     def get_absolute_url(self):
@@ -39,19 +45,14 @@ class Veiculo(models.Model):
         return f'{self.fabricante}/{self.modelo}'
 
 
-import uuid
+from datetime import date
 
-
-class VagaVeiculo(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
-                          help_text='Identificador único em todo o estacionamento, referente a vaga e ao veículo que a ocupa.')
-    data_retirada = models.DateField(null=True, blank=True)
+class Vaga(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.SET_NULL, null=True)
+    data_retirada = models.DateField(null=True, blank=True)
 
     SITUACAO_VAGA = (
         ('o', 'Ocupada'),
-        ('d', 'Disponível'),
-        ('r', 'Reservada'),
         ('m', 'Manutenção'),
     )
 
@@ -63,8 +64,19 @@ class VagaVeiculo(models.Model):
         help_text='Situação da vaga',
     )
 
+    def esta_atrasado(self):
+        if self.data_retirada and date.today() > self.data_retirada:
+            return True
+        return False
+
     class Meta:
         ordering = ['data_retirada']
+        permissions = (("pode_manipular_vaga", "Manipula o cadastro de vagas."),)
+
+    def get_absolute_url(self):
+        return reverse('vaga-detalhes', args=[str(self.id)])
 
     def __str__(self):
-        return f'{self.id} ({self.veiculo.modelo})'
+        return f'{self.id} ({self.veiculo})'
+
+

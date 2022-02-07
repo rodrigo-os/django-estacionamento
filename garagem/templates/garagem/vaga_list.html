@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Vagas</h1>
+    {% if perms.garagem.pode_manipular_vaga %}
+        <a href="{% url 'vaga-create' %}"> Nova vaga</a>
+    {% endif %}
+
+    {% if vaga_list %}
+        <ul>
+
+            {% for vaga in vaga_list %}
+                <li class="{% if vaga.esta_atrasado %}text-danger{% endif %}">
+
+                    <a href="{{ vaga.get_absolute_url }}">{{vaga.data_retirada}}</a> - [ {{ vaga.veiculo.modelo }} ]
+
+
+                    {% if perms.garagem.pode_manipular_vaga %}
+                        <a href="{% url 'vaga-update' vaga.id%}"> - Atualizar</a>
+                        <a href="{% url 'vaga-delete' vaga.id%}"> - Excluir</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+
+        </ul>
+
+    {% else %}
+        <p>Não há vagas ocupadas em nosso estacionamento.</p>
+    {% endif %}
+{% endblock %}

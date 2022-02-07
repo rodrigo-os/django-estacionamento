@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>Vaga: {{ vaga.veiculo.modelo }} {{ vaga.situacao }}</h1>
+
+    <p><strong>Modelo: </strong>{{ vaga.veiculo.modelo }}</a></p>
+    <p><strong>Situação:</strong> {{ vaga.situacao }}</p>
+    <p><strong>Data de Retirada:</strong> {{ vaga.data_retirada }}</p>
+
+{% endblock %}
