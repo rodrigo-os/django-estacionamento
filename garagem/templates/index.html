@@ -2,18 +2,27 @@
 
 {% block content %}
 
-    <h1>Estacionamento - Página inicial</h1>
+    <h1>Página inicial</h1>
+
 
     <h2>Sistema de Gestão</h2>
-    <p>O estacionamento tem atualmente os seguintes registros:</p>
-    <ul>
-        <li><strong>Veículos:</strong> {{ num_veiculos }}</li>
-        <li><strong>Proprietários:</strong> {{ num_proprietarios }}</li>
-        <li><strong>Tipos de veículos:</strong> {{ num_tipos }}</li>
 
-        <li><strong>Vagas que estão ocupadas:</strong> {{ num_vagas_ocupadas }}</li>
-        <li><strong>Vagas que precisam de manutenção:</strong> {{ num_vagas_manutencao }}</li>
-        <li><strong>Total de vagas:</strong> {{ num_vagas }}</li>
-    </ul>
+    <div class="card border-dark mb-3">
+        <div class="card-header bg-transparent">O estacionamento tem atualmente os seguintes registros:</div>
+        <div class="card-body">
+            <h5 class="card-title">Visão geral</h5>
+            <p class="card-text">
+                <ul class="list-group">
+                    <li class="list-group-item justify-content-between align-items-center"><strong>Veículos:</strong> {{ num_veiculos }}</li>
+                    <li class="list-group-item justify-content-between align-items-center"><strong>Proprietários:</strong> {{ num_proprietarios }}</li>
+                    <li class="list-group-item justify-content-between align-items-center"><strong>Tipos de veículos:</strong> {{ num_tipos }}</li>
+                    <li class="list-group-item justify-content-between align-items-center"><strong>Vagas que estão ocupadas:</strong> {{ num_vagas_ocupadas }}</li>
+                    <li class="list-group-item justify-content-between align-items-center"><strong>Vagas que precisam de manutenção:</strong> {{ num_vagas_manutencao }}</li>
+                    <li class="list-group-item justify-content-between align-items-center"><strong>Total de vagas:</strong> {{ num_vagas }}</li>
+                </ul>
+            </p>
+        </div>
+        <div class="card-footer bg-transparent"><strong>ESTACIONAMENTO</strong></div>
+    </div>
 
 {% endblock %}

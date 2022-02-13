@@ -2,25 +2,39 @@
 
 {% block content %}
 
-    <h1>Lista de Veículos</h1>
 
-    {% if perms.garagem.pode_manipular_veiculo %}
-        <a href="{% url 'veiculo-create' %}"> Novo veículo</a>
-    {% endif %}
+    <h1>Veículos</h1>
+
+    <div style="margin-bottom: 2%">
+        {% if perms.garagem.pode_manipular_veiculo %}
+            <a href="{% url 'veiculo-create' %}">
+                <button type="button" class="btn btn-outline-dark">Novo veículo</button>
+            </a>
+        {% endif %}
+    </div>
+
+
     {% if veiculo_list %}
-        <ul>
-            {% for veiculo in veiculo_list %}
-                <li>
-                    <a href="{{ veiculo.get_absolute_url }}">{{veiculo.modelo}}</a>
-                    {{veiculo.proprietario}}
+        {% for veiculo in veiculo_list %}
+            <div class="card bg-light border-dark mb-3">
+                <div class="card-header bg-transparent border-info mb-3">Fabricante: {{veiculo.fabricante}}</div>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ veiculo.get_absolute_url }}">{{veiculo.modelo}}</a></h5>
+                    <p class="card-text">Proprietário: {{veiculo.proprietario}}</p>
+                </div>
+                <div class="card-footer bg-transparent border-info mb-3">
                     {% if perms.garagem.pode_manipular_veiculo %}
-                        <a href="{% url 'veiculo-update' veiculo.id%}"> - Atualizar</a>
-                        <a href="{% url 'veiculo-delete' veiculo.id%}"> - Excluir</a>
+                        <div>
+                            <a href="{% url 'veiculo-update' veiculo.id%}" class="btn btn-primary" role="button">Atualizar</a>
+                            <a href="{% url 'veiculo-delete' veiculo.id%}" class="btn btn-danger" role="button">Excluir</a>
+                        </div>
                     {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+                </div>
+            </div>
+        {% endfor %}
+
     {% else %}
-        <p>Não existem veículos no estacionamento</p>
+        <p>Não existem veículos no estacionamento.</p>
     {% endif %}
+
 {% endblock %}

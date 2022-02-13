@@ -1,30 +1,42 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+
     <h1>Vagas</h1>
-    {% if perms.garagem.pode_manipular_vaga %}
-        <a href="{% url 'vaga-create' %}"> Nova vaga</a>
-    {% endif %}
+
+
+    <div style="margin-bottom: 2%">
+        {% if perms.garagem.pode_manipular_vaga %}
+            <a href="{% url 'vaga-create' %}">
+                <button type="button" class="btn btn-outline-dark">Nova vaga</button>
+            </a>
+        {% endif %}
+    </div>
 
     {% if vaga_list %}
-        <ul>
-
-            {% for vaga in vaga_list %}
-                <li class="{% if vaga.esta_atrasado %}text-danger{% endif %}">
-
-                    <a href="{{ vaga.get_absolute_url }}">{{vaga.data_retirada}}</a> - [ {{ vaga.veiculo.modelo }} ]
-
-
+        {% for vaga in vaga_list %}
+            <div class="card bg-light border-dark mb-3">
+                <div class="card-header bg-transparent border-info mb-3">Modelo: {{ vaga.veiculo.modelo }}</div>
+                <div class="card-body">
+                    <h5 class="card-title">Data da retirada: <a href="{{ vaga.get_absolute_url }}">{{vaga.data_retirada}}</a></h5>
+                    <p class="card-text">Situação da vaga: {{vaga.situacao}}</p>
+                </div>
+                <div class="card-footer bg-transparent border-info mb-3">
                     {% if perms.garagem.pode_manipular_vaga %}
-                        <a href="{% url 'vaga-update' vaga.id%}"> - Atualizar</a>
-                        <a href="{% url 'vaga-delete' vaga.id%}"> - Excluir</a>
+                        <div>
+                            <a href="{% url 'vaga-update' vaga.id%}" class="btn btn-primary" role="button">Atualizar</a>
+                            <a href="{% url 'vaga-delete' vaga.id%}" class="btn btn-danger" role="button">Excluir</a>
+                        </div>
                     {% endif %}
-                </li>
-            {% endfor %}
-
-        </ul>
+                </div>
+            </div>
+        {% endfor %}
 
     {% else %}
         <p>Não há vagas ocupadas em nosso estacionamento.</p>
     {% endif %}
+
+
+
+
 {% endblock %}

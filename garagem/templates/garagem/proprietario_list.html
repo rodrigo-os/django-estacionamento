@@ -2,23 +2,38 @@
 
 {% block content %}
 
-    <h1>Lista de Proprietários</h1>
+    <h1>Proprietários</h1>
 
-    {% if perms.garagem.pode_manipular_proprietario %}
-        <a href="{% url 'proprietario-create' %}"> Novo proprietário</a>
-    {% endif %}
+
+
+
+    <div style="margin-bottom: 2%">
+        {% if perms.garagem.pode_manipular_proprietario %}
+            <a href="{% url 'proprietario-create' %}">
+                <button type="button" class="btn btn-outline-dark">Novo proprietário</button>
+            </a>
+        {% endif %}
+    </div>
+
     {% if proprietario_list %}
-        <ul>
-            {% for proprietario in proprietario_list %}
-                <li>
-                    <a href="{{ proprietario.get_absolute_url }}">{{ proprietario.primeiro_nome }} {{ proprietario.ultimo_nome }}</a>
+        {% for proprietario in proprietario_list %}
+            <div class="card bg-light border-dark mb-3">
+                <div class="card-header bg-transparent border-info mb-3">Data de Nascimento: {{proprietario.data_nascimento}}</div>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ proprietario.get_absolute_url }}">{{proprietario.primeiro_nome}}</a></h5>
+                    <p class="card-text">{{proprietario.ultimo_nome}}</p>
+                </div>
+                <div class="card-footer bg-transparent border-info mb-3">
                     {% if perms.garagem.pode_manipular_proprietario %}
-                        <a href="{% url 'proprietario-update' proprietario.id%}"> - Atualizar</a>
-                        <a href="{% url 'proprietario-delete' proprietario.id%}"> - Excluir</a>
+                        <div>
+                            <a href="{% url 'proprietario-update' proprietario.id%}" class="btn btn-primary" role="button">Atualizar</a>
+                            <a href="{% url 'proprietario-delete' proprietario.id%}" class="btn btn-danger" role="button">Excluir</a>
+                        </div>
                     {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+                </div>
+            </div>
+        {% endfor %}
+
     {% else %}
         <p>Não existem proprietários cadastrados.</p>
     {% endif %}
